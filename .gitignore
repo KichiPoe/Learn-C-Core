@@ -1,0 +1,74 @@
+# ============================================
+# Learn-C-Core
+# ============================================
+
+# Compiled C binaries
+# Linux / Unix / Windows / Generic executable files
+*.out
+*.exe
+*.bin
+
+# Object files and libraries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# Build directories
+build/
+Build/
+bin/
+out/
+dist/
+
+# Debugging files
+*.dSYM/
+core
+core.*
+*.stackdump
+
+# Profiling / analysis output
+*.gcda
+*.gcno
+*.gcov
+.callgrind.*
+cachegrind.out.*
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+CTestTestfile.cmake
+Makefile.cmake
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Environment / local configs
+.env
+.env.*
+
+# Testing output
+test-results/
+coverage/
+
+# Personal scratch files
+scratch/
+tmp/
+temp/
