@@ -213,6 +213,139 @@ The operating system and scripts can check this value to know whether the progra
 
 ---
 
+# Lesson 0.8 — MyCalc Project
+
+While building the calculator CLI, I came across a few new concepts.
+
+### Command Line Arguments Are Text
+
+Everything received through `argc` and `argv` comes as text.
+
+Example:
+
+```bash
+mycalc add 10 20
+```
+
+Values:
+
+```c
+argv[1] = "add"
+argv[2] = "10"
+argv[3] = "20"
+````
+
+Numbers are still `strings` until converted.
+
+### stdlib.h and atof()
+
+`stdlib.h` provides utility functions.
+
+Used: `atof()` to convert command line text into numbers.
+
+Example:
+
+```c
+double value = atof(argv[2]);
+```
+
+> Note:
+`atof()` does not properly report invalid input.
+Better conversion methods will be learned later.
+
+### strcmp()
+
+Strings in C are arrays of characters.
+
+Two strings can have the same content but exist at different memory locations.
+
+Therefore, string comparison should use: `strcmp()`
+
+Example:
+
+```c
+strcmp(argv[1], "add") == 0
+```
+
+returns true when both strings contain the same characters.
+
+### void Functions
+
+Functions that do not return anything use: `void`
+
+Example:
+
+```c
+void print_help(void)
+{
+    printf("Help");
+}
+```
+
+Modern C style:
+
+```c
+void function(void)
+```
+
+means the function takes no arguments.
+
+Older C style:
+
+```c
+void function()
+```
+
+means the arguments are not specified.
+
+### stdout, stderr and stdin
+
+Programs have different input/output streams:
+
+```
+stdin  -> input
+stdout -> normal output
+stderr -> error output
+```
+
+Normal messages use:
+
+```c
+printf()
+```
+
+Errors use:
+
+```c
+fprintf(stderr, "error");
+```
+
+Keeping errors separate allows other programs or scripts to handle them differently.
+
+### Logical Operators
+
+Used:
+
+```c
+&&  -> AND
+||  -> OR
+```
+
+Example:
+
+```c
+if (strcmp(argv[1], "-h") == 0 ||
+    strcmp(argv[1], "--help") == 0)
+```
+
+Means:
+
+Run this block if the command is either:
+
+```bash
+-h or --help
+```
+
 # Overall
 
 Before Level 0, I only knew that `gcc main.c -o program.exe` produced an executable.
@@ -220,15 +353,7 @@ Before Level 0, I only knew that `gcc main.c -o program.exe` produced an executa
 Now I know there's an entire pipeline behind it:
 
 ```text
-.c
- ↓
-.i
- ↓
-.s
- ↓
-.o
- ↓
-.exe
+*.c → *.i → *.s → *.o → *.exe
 ```
 
 I also got comfortable using compiler warnings, reading compiler messages, running GDB, and writing simple command-line programs with `argc`, `argv`, and exit codes.
