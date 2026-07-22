@@ -346,6 +346,27 @@ Run this block if the command is either:
 -h or --help
 ```
 
+### Header Guards
+
+Example :
+
+```c
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
+
+double add(double a, double b);
+double sub(double a, double b);
+
+#endif
+```
+
+* `#ifndef` checks whether the macro has already been defined.
+* `#define` defines the macro the first time the header is included.
+* `#endif` marks the end of the conditional block.
+* When the preprocessor reads `#include "calculator.h"`, it expands the contents of that file.
+* If the same header gets included again, it would be expanded again.
+* Header guards make sure the header is processed only once, preventing `multiple inclusion` and `redefinition errors`.
+
 # Overall
 
 Before Level 0, I only knew that `gcc main.c -o program.exe` produced an executable.
